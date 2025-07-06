@@ -1,0 +1,19 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          ping:
+            client-id: YOUR_CLIENT_ID
+            client-secret: YOUR_CLIENT_SECRET
+            scope: openid,profile,email
+            redirect-uri: "{baseUrl}/login/oauth2/code/oidc"
+            authorization-grant-type: authorization_code
+            client-name: PingFederate
+        provider:
+          ping:
+            authorization-uri: https://YOUR_PINGFEDERATE_DOMAIN/as/authorization.oauth2
+            token-uri: https://YOUR_PINGFEDERATE_DOMAIN/as/token.oauth2
+            user-info-uri: https://YOUR_PINGFEDERATE_DOMAIN/idp/userinfo.openid
+            jwk-set-uri: https://YOUR_PINGFEDERATE_DOMAIN/pf/JWKS
+            user-name-attribute: sub
